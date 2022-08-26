@@ -38,13 +38,13 @@ class Cursor implements Iterator
     }
 
     // PHP iterator interface
-    public function rewind()
+    public function rewind(): void
     {
         if ($this->wasIterated) {
             throw new RqlDriverError("Rewind() not supported. You can only iterate over a cursor once.");
         }
     }
-    public function next()
+    public function next(): void
     {
         $this->requestMoreIfNecessary();
         if (!$this->valid()) {
@@ -54,18 +54,18 @@ class Cursor implements Iterator
         $this->currentIndex++;
         $this->totalIndex++;
     }
-    public function valid()
+    public function valid(): bool
     {
         $this->requestMoreIfNecessary();
         return !$this->isComplete || ($this->currentIndex < $this->currentSize);
     }
 
-    public function key()
+    public function key(): mixed
     {
         return $this->totalIndex;
     }
 
-    public function current()
+    public function current(): mixed
     {
         $this->requestMoreIfNecessary();
         if (!$this->valid()) {
