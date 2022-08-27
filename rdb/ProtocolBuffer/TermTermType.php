@@ -66,6 +66,7 @@ class TermTermType
     const PB_GET_FIELD           = 31;
     const PB_GET_INTERSECTING    = 166;
     const PB_GET_NEAREST         = 168;
+    const PB_GET_WRITE_HOOK      = 190;
     const PB_GROUP               = 144;
     const PB_GT                  = 21;
     const PB_HAS_FIELDS          = 32;
@@ -145,6 +146,7 @@ class TermTermType
     const PB_SET_INSERT          = 88;
     const PB_SET_INTERSECTION    = 89;
     const PB_SET_UNION           = 90;
+    const PB_SET_WRITE_HOOK      = 189;
     const PB_SKIP                = 70;
     const PB_SLICE               = 30;
     const PB_SPLICE_AT           = 85;

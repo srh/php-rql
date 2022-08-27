@@ -104,6 +104,14 @@ class Table extends ValuedQuery
     {
         return new Status($this);
     }
+    public function setWriteHook($writeHookFunction)
+    {
+        return new SetWriteHook($this, $writeHookFunction);
+    }
+    public function getWriteHook()
+    {
+        return new GetWriteHook($this);
+    }
 
 
     public function __construct($database, $tableName, $useOutdatedOrOpts = null)
