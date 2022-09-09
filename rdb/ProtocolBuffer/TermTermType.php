@@ -15,6 +15,12 @@ class TermTermType
     const PB_BETWEEN             = 182;
     const PB_BETWEEN_DEPRECATED  = 36;
     const PB_BINARY              = 155;
+    const PB_BIT_AND             = 191;
+    const PB_BIT_OR              = 192;
+    const PB_BIT_XOR             = 193;
+    const PB_BIT_NOT             = 194;
+    const PB_BIT_SAL             = 195;
+    const PB_BIT_SAR             = 196;
     const PB_BRACKET             = 170;
     const PB_BRANCH              = 65;
     const PB_CEIL                = 184;
