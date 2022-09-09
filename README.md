@@ -5,20 +5,17 @@ A PHP client driver for the RethinkDB query language (ReQL).
 
 PHP-RQL is licensed under the terms of the Apache License 2.0 http://www.apache.org/licenses/LICENSE-2.0
 
-Continuous Integration
------------------------
-Master branch:
-[![master branch](https://travis-ci.org/danielmewes/php-rql.svg?branch=master)](https://travis-ci.org/danielmewes/php-rql)
+This is based off the original PHP-RQL, whose project website is at http://php-rql.dnsalias.net
 
-Development branch:
-[![dev branch](https://travis-ci.org/danielmewes/php-rql.svg?branch=dev)](https://travis-ci.org/danielmewes/php-rql)
+Testing
+-----------------------
 
 To run the tests at the command line, issue `composer install` and then `composer test` at the package root. This requires `composer` to be available in `$PATH`.
 
 Documentation
 ----------------
 
-Read the PHP-RQL [API documentation](http://danielmewes.dnsalias.net/~daniel/php-rql-api/).
+Read `docs/index.html`, or `docs/php-index.md`.
 
 The official [JavaScript driver documentation](http://rethinkdb.com/api/javascript/) has more details on the available terms. Most examples for the JavaScript driver can be translated to PHP-RQL with few changes.
 
@@ -64,11 +61,17 @@ Example
 Release Notes
 ----------------
 
-...are available on the main website: http://php-rql.dnsalias.net
+This is based off of https://github.com/danielmewes/php-rql, and his
+past release notes as of version 2.3.0 are available on its website:
+http://php-rql.dnsalias.net
 
+Further changes:
+- Added support for PHP 8 (and dropped support for prior versions)
+- Added support for RethinkDB 2.4 commands (write hooks and bitwise ops)
 
 Attributions
 ------------
+* PHP-RQL was originally developed by Daniel Mewes.
 * PHP-RQL uses pb4php http://code.google.com/p/pb4php/ by Nikolai Kordulla.
 * The API documentation is based on the official RethinkDB API documentation.
 * The API documentation is built using jTokenizer by Tim Whitlock (http://timwhitlock.info) and PHP Markdown by Michel Fortin (https://michelf.ca/).
