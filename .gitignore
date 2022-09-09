@@ -6,4 +6,4 @@ _projects/
 _steps/
 rethinkdb_data/
 wercker
-
+/tests/.phpunit.result.cache
