@@ -187,4 +187,44 @@ class TableTest extends TestCase
 
         $this->assertEquals(array('tables_dropped' => 1.0), (array)$res);
     }
+
+    public function testWriteHook()
+    {
+        $table = 't2_' . rand();
+
+        $this->db()->tableCreate($table)->run($this->conn);
+
+        $res = $this->db()->table($table)->setWriteHook(function ($p, $old, $doc) {
+            return $doc->merge(array('last_modified' => $p('timestamp')));
+        })->run($this->conn);
+        $this->assertEquals(1, $res['created']);
+
+        $this->db()->table($table)->insert(array('a' => 1, 'id' => 1, 'time' => \r\now()))->run($this->conn);
+
+        $res = $this->db()->table($table)->get(1)->run($this->conn);
+
+        $this->assertEquals(1, $res['id']);
+        $this->assertEquals(1, $res['a']);
+        $this->assertNotEquals(null, $res['time']);
+        $this->assertEquals($res['time'], $res['last_modified']);
+
+        $res = $this->db()->table($table)->getWriteHook()->run($this->conn);
+        $this->assertTrue(isset($res));
+        $this->assertTrue(isset($res['function']));
+
+        $saved = $res['function'];
+
+        $res = $this->db()->table($table)->setWriteHook(null)->run($this->conn);
+        $this->assertTrue(isset($res));
+
+        // Test driver supports binary object write hooks.
+        $res = $this->db()->table($table)->setWriteHook(\r\binary($saved))->run($this->conn);
+        $this->assertEquals(1, $res['created']);
+
+
+        $res = $this->db()->tableDrop($table)->pluck('tables_dropped')->run($this->conn);
+
+        $this->assertEquals(array('tables_dropped' => 1.0), (array)$res);
+    }
+
 }
