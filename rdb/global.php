@@ -48,6 +48,12 @@ use r\Queries\Geo\Point;
 use r\Queries\Geo\Polygon;
 use r\Queries\Manipulation\GetField;
 use r\Queries\Math\Add;
+use r\Queries\Math\BitAnd;
+use r\Queries\Math\BitNot;
+use r\Queries\Math\BitOr;
+use r\Queries\Math\BitSal;
+use r\Queries\Math\BitSar;
+use r\Queries\Math\BitXor;
 use r\Queries\Math\Ceil;
 use r\Queries\Math\Div;
 use r\Queries\Math\Eq;
@@ -276,6 +282,32 @@ function not($expr)
 {
     return new Not($expr);
 }
+
+function bitAnd($expr1, $expr2)
+{
+    return new BitAnd($expr1, $expr2);
+}
+function bitOr($expr1, $expr2)
+{
+    return new BitOr($expr1, $expr2);
+}
+function bitXor($expr1, $expr2)
+{
+    return new BitXor($expr1, $expr2);
+}
+function bitNot($expr1)
+{
+    return new BitNot($expr1);
+}
+function bitSal($expr1, $expr2)
+{
+    return new BitSal($expr1, $expr2);
+}
+function bitSar($expr1, $expr2)
+{
+    return new BitSar($expr1, $expr2);
+}
+
 
 function random($left = null, $right = null, $opts = null)
 {

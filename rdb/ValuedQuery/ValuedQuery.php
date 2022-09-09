@@ -65,6 +65,12 @@ use r\Queries\Manipulation\SetUnion;
 use r\Queries\Manipulation\SpliceAt;
 use r\Queries\Manipulation\Without;
 use r\Queries\Math\Add;
+use r\Queries\Math\BitAnd;
+use r\Queries\Math\BitNot;
+use r\Queries\Math\BitOr;
+use r\Queries\Math\BitSal;
+use r\Queries\Math\BitSar;
+use r\Queries\Math\BitXor;
 use r\Queries\Math\Ceil;
 use r\Queries\Math\Div;
 use r\Queries\Math\Downcase;
@@ -376,6 +382,30 @@ abstract class ValuedQuery extends Query
     public function rMatch($expression)
     {
         return new RMatch($this, $expression);
+    }
+    public function bitAnd($other)
+    {
+        return new BitAnd($this, $other);
+    }
+    public function bitOr($other)
+    {
+        return new BitOr($this, $other);
+    }
+    public function bitXor($other)
+    {
+        return new BitXor($this, $other);
+    }
+    public function bitNot()
+    {
+        return new BitNot($this);
+    }
+    public function bitSal($other)
+    {
+        return new BitSal($this, $other);
+    }
+    public function bitSar($other)
+    {
+        return new BitSar($this, $other);
     }
     public function upcase()
     {

@@ -236,6 +236,37 @@ class MathTest extends TestCase
         $this->assertTrue(\r\expr(false)->not()->run($this->conn));
     }
 
+    public function testBitAnd()
+    {
+        $this->assertEquals(2.0, \r\expr(3)->bitAnd(6)->run($this->conn));
+    }
+
+    public function testBitOr()
+    {
+        $this->assertEquals(7.0, \r\expr(3)->bitOr(6)->run($this->conn));
+    }
+
+    public function testBitXor()
+    {
+        $this->assertEquals(5.0, \r\expr(3)->bitXor(6)->run($this->conn));
+    }
+
+    public function testBitNot()
+    {
+        $this->assertEquals(-4.0, \r\expr(3)->bitNot()->run($this->conn));
+    }
+
+    public function testBitSal()
+    {
+        $this->assertEquals(6.0, \r\expr(3)->bitSal(1)->run($this->conn));
+    }
+
+    public function testBitSar()
+    {
+        $this->assertEquals(1.0, \r\expr(3)->bitSar(1)->run($this->conn));
+    }
+
+
     public function testAdditionExpression()
     {
         $this->assertEquals(5.0, \r\add(\r\expr(3), \r\expr(2))->run($this->conn));
@@ -390,6 +421,42 @@ class MathTest extends TestCase
     {
         $this->assertTrue(\r\not(\r\expr(false))->run($this->conn));
     }
+
+    public function testBitAndExpression()
+    {
+        $this->assertEquals(2.0, \r\bitAnd(\r\expr(3), \r\expr(6))->run($this->conn));
+    }
+
+    public function testBitAndExpressionDatumConversion()
+    {
+        $this->assertEquals(2.0, \r\bitAnd(3, 6)->run($this->conn));
+    }
+
+    public function testBitOrExpression()
+    {
+        $this->assertEquals(7.0, \r\bitOr(\r\expr(3), \r\expr(6))->run($this->conn));
+    }
+
+    public function testBitXorExpression()
+    {
+        $this->assertEquals(5.0, \r\bitXor(\r\expr(3), \r\expr(6))->run($this->conn));
+    }
+
+    public function testBitNotExpression()
+    {
+        $this->assertEquals(-4.0, \r\bitNot(\r\expr(3))->run($this->conn));
+    }
+
+    public function testBitSalExpression()
+    {
+        $this->assertEquals(6.0, \r\bitSal(\r\expr(3), \r\expr(1))->run($this->conn));
+    }
+
+    public function testBitSarExpression()
+    {
+        $this->assertEquals(1.0, \r\bitSar(\r\expr(3), \r\expr(1))->run($this->conn));
+    }
+
 
     public function testRandom()
     {
